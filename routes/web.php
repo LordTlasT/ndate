@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactPostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -35,6 +36,9 @@ Route::middleware('auth')->group(function () {
         ->middleware('admin')
         ->name('profile.promote');
 });
+
+Route::resource('/contact', ContactPostController::class)
+    ->only(['index', 'store']);
 
 Route::get('/about', function () {
     return view('about');
