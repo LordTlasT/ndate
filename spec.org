@@ -1,0 +1,92 @@
+#+title: spec
+#+startup: overview
+
+* DONE Login system [4/4]
+- [X] Users can log in
+- [X] Visitors can create a new account
+- [X] Users may or may not be an administrator
+- [X] Only an administrator can promote another user to administrator status (or create a new user that is an admin)
+
+* TODO Profile page [0/2]
+- [ ] user has their own publicly available profile page
+- [-] user can edit their own user data
+  information shown is at least:
+  - [X] Username
+  - [ ] Birthday
+  - [ ] Avatar (that can be uploaded and saved on the webserver)
+  - [ ] Short 'about me' biography 
+
+* TODO Latest news [0/2]
+- [ ] Admins can add, edit, and delete news items
+- [ ] Every visitor of the website can view the news posts
+  These news items have at least the following:
+  - [ ] Title
+  - [ ] Cover image
+  - [ ] Content
+  - [ ] Publishing date
+
+* TODO FAQ page [0/4]
+- [ ] There is a list of questions and answers, grouped by categories
+- [ ] Admins can add, edit, and delete FAQ categories
+- [ ] Admins can add, edit, and delete FAQ question and answer pairs
+- [ ] Every visitor of the website can view the FAQ page(s)
+
+* TODO Contact page [2/2]
+- [X] Visitors can fill out a contact form
+- [X] The content of submitted forms will be sent to the administrators
+
+
+* TODO views [2/4]
+- [X] You will at least have an "about" page. This is a static view that will serve as your Readme/list of sources. Cite any resources that you've used in this page, as well as a link to those pages. This page is mandatory, if your about page does not exist, you will not be able to pass for this project.
+- [X] Use at least 2 layouts (think about maybe splitting up the 'public' website and the admin panel)
+- [ ] Use partials where logical
+- [ ] Use the techniques we've seen during the exercises:
+  - [ ] Control structures
+  - [ ] XSS protection
+  - [ ] CSRF protection
+  - [ ] Client-side validation
+
+* TODO Routes [0/3]
+- [ ] All routes use controller methods
+- [ ] All routes use logical middleware
+- [ ] If possible, group the routes where needed
+
+* DONE Controller [1/1]
+- [X] Use several controllers to split your logic
+Think back to resource controllers for CRUD operations
+
+* TODO Models [0/2]
+- [ ] Use Eloquent models
+- [ ] Add relationships where needed:
+  - [ ] At least 1 one-to-many
+  - [ ] At least 1 many-to-many 
+
+* DONE Database [2/2]
+- [X] Your database needs to be created using migration files 
+- [X] Add seeders to have some "dummy" data
+
+I will run "php artisan migrate:fresh --seed" on every project. After
+running this your website should be usable for me.
+
+* DONE Authentication [6/6]
+Default functionality for authentication:
+- [X] Log in/out
+- [X] 'Remember me'
+- [X] Register
+- [X] Forgot password
+- [X] Change password
+- [X] Add 1 default admin with a seeder
+  - Username :: admin
+  - Email :: admin@ehb.be
+  - Password :: Password!321
+
+* DONE Theming/styles [1/1]
+- [X] Provide some default styling for your website. Even though design is
+  not a core competence of this course, I expect a minimum. If you are
+  not good at design, use something like Bootstrap and pick a free
+  theme from a website such as https://startbootstrap.com/
+
+* TODO's [0/2]
+- [ ] change navigation layout to a component or change it to a
+  the navigation component + profile.
+- [ ] split the profile in a profile-dropdown
