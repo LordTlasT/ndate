@@ -3,14 +3,14 @@
     <x-slot name="navigation">
         @if (Route::has('login'))
             @auth
-                <li><a href="{{ url('/dashboard') }}"><strong>Dashboard</strong></a></li>
+                <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
                 <form id="form" method="POST" action="{{ route('logout') }}">@csrf</form>
                 @if (Route::has('logout'))
                     <li><a href="#" onclick="event.preventDefault(); document.getElementById('form').submit();">Log
                             out</a></li>
                 @endif
             @else
-                <li><a href="{{ route('login') }}"><strong>Log in</strong></a></li>
+                <li><a href="{{ route('login') }}">Log in</a></li>
 
                 @if (Route::has('register'))
                     <li><a href="{{ route('register') }}">Register</a></li>

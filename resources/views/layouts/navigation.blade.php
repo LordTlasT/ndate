@@ -5,10 +5,7 @@
     <div class="container-fluid">
         <nav>
             <ul>
-                <li>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
+                <li><a href="/">Home</a>
                 </li>
                 <li>
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
@@ -18,9 +15,9 @@
 
             </ul>
             <ul>
-                <li>
+                <li role="list">
                     <details role="list" dir="rtl">
-                        <summary aria-haspopup="listbox" role="button" class="outline">
+                        <summary aria-haspopup="listbox" dir="rtl" role="link">
                             {{ Auth::user()->name }}
                         </summary>
                         <ul role="listbox">

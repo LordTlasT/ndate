@@ -26,11 +26,10 @@
         </span>
         <blockquote>{{ $post->message }}</blockquote>
         @if ($post->user->is(auth()->user()))
-            </a>
             <a href="#"
                 onclick="event.preventDefault(); document.getElementById('form-{{ $post->id }}').submit();">
                 {{ __('Delete') }}</a>
-            <a href="{{ route('posts.edit', $post) }}"> {{ __('Edit') }}
+            <a href="{{ route('posts.edit', $post) }}"> {{ __('Edit') }}</a>
         @endif
     @endforeach
 
