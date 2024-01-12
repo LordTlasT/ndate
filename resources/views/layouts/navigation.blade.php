@@ -15,9 +15,9 @@
 
             </ul>
             <ul>
-                <li role="list">
+                <li>
                     <details role="list" dir="rtl">
-                        <summary aria-haspopup="listbox" dir="rtl" role="link">
+                        <summary aria-haspopup="listbox" dir="rtl" role="link" class="secondary">
                             {{ Auth::user()->name }}
                         </summary>
                         <ul role="listbox">

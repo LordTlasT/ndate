@@ -31,9 +31,7 @@
         @endif
 
         <!-- Page Content -->
-        <main>
-            {{ $slot }}
-        </main>
+        {{ $slot }}
     </article>
     </main>
 
