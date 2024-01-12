@@ -31,6 +31,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::put('/profile/promote', [ProfileController::class, 'promote'])
+        ->middleware('admin')
+        ->name('profile.promote');
 });
 
 Route::get('/about', function () {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -56,5 +57,20 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function promote(Request $request): RedirectResponse
+    {
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user)
+            return Redirect::route('dashboard')->with('status', 'User not found');
+        if  ($user->is_admin == 1)
+            return Redirect::route('dashboard')->with('status', 'User is already an admin');
+
+        $user->is_admin = 1;
+        $user->save();
+        return Redirect::route('dashboard')->with('status', 'User promoted successfully');
+
     }
 }
