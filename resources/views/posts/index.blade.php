@@ -1,14 +1,9 @@
 <x-app-layout>
 
+    <x-post action="{{ route('posts.store') }}">
+    </x-post>
 
-    <form method="POST" action="{{ route('posts.store') }}">@csrf
-        <textarea name="message" placeholder="{{ __('What\'s on your mind?') }}">
-    {{ old('message') }}</textarea>
-        <x-input-error :messages="$errors->get('message')" />
-        <x-primary-button>{{ __('Post') }}</x-primary-button>
-    </form>
     <hr>
-
     @foreach ($posts as $post)
         @if ($post->user->is(auth()->user()))
             <form id="form-{{ $post->id }}" method="POST" action="{{ route('posts.destroy', $post) }}">
