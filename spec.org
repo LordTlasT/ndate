@@ -21,14 +21,14 @@
   - [X] Avatar (that can be uploaded and saved on the webserver)
   - [X] Short 'about me' biography 
 
-* NEXT Latest news [0/2]
-- [ ] Admins can add, edit, and delete news items
-- [ ] Every visitor of the website can view the news posts
+* NEXT Latest news [1/2]
+- [X] Admins can add, edit, and delete news items
+- [-] Every visitor of the website can view the news posts
   These news items have at least the following:
   - [ ] Title
   - [ ] Cover image
-  - [ ] Content
-  - [ ] Publishing date
+  - [X] Content
+  - [X] Publishing date
 
 * NEXT FAQ page [0/4]
 - [ ] There is a list of questions and answers, grouped by categories
