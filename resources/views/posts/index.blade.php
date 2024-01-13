@@ -1,11 +1,40 @@
-<x-app-layout>
+@php
+    $cur_user = auth()->user();
+    /**
+     * Returns true if the current user is an admin.
+     * @return bool
+     */
+    function is_admin($user)
+    {
+        return $user && $user->isAdmin();
+    }
+@endphp
 
-    <x-post action="{{ route('posts.store') }}">
-    </x-post>
+<x-guest-layout>
 
-    <hr>
+    <x-slot name="navigation">
+        <li>
+            <a href="{{ url('/') }}">{{ __('Home') }}</a>
+        </li>
+    </x-slot>
+
+    <x-slot name="header">
+        <hgroup>
+            <h2 align="center">
+                {{ __('News') }}
+            </h2>
+            <p align="center">Latest news!</p>
+        </hgroup>
+    </x-slot>
+
+    @if (is_admin($cur_user))
+        <x-post action="{{ route('posts.store') }}">
+        </x-post>
+        <hr>
+    @endif
+
     @foreach ($posts as $post)
-        @if ($post->user->is(auth()->user()))
+        @if (is_admin($cur_user))
             <form id="form-{{ $post->id }}" method="POST" action="{{ route('posts.destroy', $post) }}">
                 @csrf
                 @method('delete')
@@ -20,7 +49,7 @@
             @endunless
         </span>
         <blockquote>{{ $post->message }}</blockquote>
-        @if ($post->user->is(auth()->user()))
+        @if (is_admin($cur_user))
             <a href="#"
                 onclick="event.preventDefault(); document.getElementById('form-{{ $post->id }}').submit();">
                 {{ __('Delete') }}</a>
@@ -28,4 +57,4 @@
         @endif
     @endforeach
 
-</x-app-layout>
+</x-guest-layout>
