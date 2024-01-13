@@ -1,8 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 align="center">
-            {{ __('Profile') }}
-        </h2>
+        <hgroup>
+            <h2 align="center">
+                {{ __('Profile') }}
+            </h2>
+            <p align="center"><a href="{{route('profile.show', $user)}}">Link to yours.</a></p>
+        </hgroup>
     </x-slot>
     <div class="grid">
 

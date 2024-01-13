@@ -83,4 +83,9 @@ class ProfileController extends Controller
         return Redirect::route('dashboard')->with('status', 'User promoted successfully');
 
     }
+
+    public function show(User $user)
+    {
+        return view('profile.show', ['user' => $user]);
+    }
 }
