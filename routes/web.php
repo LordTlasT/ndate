@@ -26,10 +26,17 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Posts
+// News Posts
 Route::resource('posts', PostController::class)
-    ->only(['index', 'store', 'edit', 'update', 'destroy'])
+    ->only(['edit', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
+
+Route::resource('posts', PostController::class)
+    ->only('index');
+
+Route::resource('posts', PostController::class)
+    ->only(['store'])
+    ->middleware(['auth', 'verified', 'admin']);
 
 // Profile
 Route::middleware('auth')->group(function () {
