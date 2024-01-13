@@ -5,6 +5,9 @@
     <div class="container-fluid">
         <nav>
             <ul>
+                @auth
+                    <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                @endauth
                 {{ $slot }}
                 <li>
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')" role="button" class="secondary">
@@ -41,10 +44,20 @@
                             </ul>
                         </details>
                     </li>
+                @else
+                    @if (Route::has('login'))
+                        <li><a href="{{ route('login') }}">Log in</a></li>
+                    @endif
+
+                    @if (Route::has('register'))
+                        <li><a href="{{ route('register') }}">Register</a></li>
+                    @endif
                 @endauth
             </ul>
             <ul>
-
+                @if (Route::has('faq.index'))
+                    <li><a href="{{ route('faq.index') }}" class="secondary"><u>FAQ</u></a></li>
+                @endif
                 @if (Route::has('about'))
                     <li><a href="{{ route('about') }}" class="secondary"><u>About</u></a></li>
                 @endif
