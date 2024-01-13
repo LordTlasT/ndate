@@ -16,18 +16,22 @@ use App\Http\Controllers\PostController;
 |
 */
 
+// Guest Home
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Auth Home / Dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Posts
 Route::resource('posts', PostController::class)
     ->only(['index', 'store', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 
+// Profile
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -36,10 +40,13 @@ Route::middleware('auth')->group(function () {
         ->middleware('admin')
         ->name('profile.promote');
 });
+Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 
+// ContactPost
 Route::resource('/contact', ContactPostController::class)
     ->only(['index', 'store']);
 
+// About
 Route::get('/about', function () {
     return view('about');
 })->name('about');

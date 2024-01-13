@@ -1,5 +1,10 @@
 #+title: spec
 #+startup: overview
+#+seq_todo: TODO NEXT | DONE
+
+#+begin_src shell
+  php artisan storage:link
+#+end_src
 
 * DONE Login system [4/4]
 - [X] Users can log in
@@ -7,16 +12,16 @@
 - [X] Users may or may not be an administrator
 - [X] Only an administrator can promote another user to administrator status (or create a new user that is an admin)
 
-* TODO Profile page [0/2]
-- [ ] user has their own publicly available profile page
-- [-] user can edit their own user data
+* DONE Profile page [2/2]
+- [X] user has their own publicly available profile page
+- [X] user can edit their own user data
   information shown is at least:
   - [X] Username
-  - [ ] Birthday
-  - [ ] Avatar (that can be uploaded and saved on the webserver)
-  - [ ] Short 'about me' biography 
+  - [X] Birthday
+  - [X] Avatar (that can be uploaded and saved on the webserver)
+  - [X] Short 'about me' biography 
 
-* TODO Latest news [0/2]
+* NEXT Latest news [0/2]
 - [ ] Admins can add, edit, and delete news items
 - [ ] Every visitor of the website can view the news posts
   These news items have at least the following:
@@ -25,18 +30,18 @@
   - [ ] Content
   - [ ] Publishing date
 
-* TODO FAQ page [0/4]
+* NEXT FAQ page [0/4]
 - [ ] There is a list of questions and answers, grouped by categories
 - [ ] Admins can add, edit, and delete FAQ categories
 - [ ] Admins can add, edit, and delete FAQ question and answer pairs
 - [ ] Every visitor of the website can view the FAQ page(s)
 
-* TODO Contact page [2/2]
+* NEXT Contact page [2/2]
 - [X] Visitors can fill out a contact form
 - [X] The content of submitted forms will be sent to the administrators
 
 
-* TODO views [2/4]
+* NEXT views [2/4]
 - [X] You will at least have an "about" page. This is a static view that will serve as your Readme/list of sources. Cite any resources that you've used in this page, as well as a link to those pages. This page is mandatory, if your about page does not exist, you will not be able to pass for this project.
 - [X] Use at least 2 layouts (think about maybe splitting up the 'public' website and the admin panel)
 - [ ] Use partials where logical
@@ -46,7 +51,7 @@
   - [ ] CSRF protection
   - [ ] Client-side validation
 
-* TODO Routes [0/3]
+* NEXT Routes [0/3]
 - [ ] All routes use controller methods
 - [ ] All routes use logical middleware
 - [ ] If possible, group the routes where needed
@@ -55,7 +60,7 @@
 - [X] Use several controllers to split your logic
 Think back to resource controllers for CRUD operations
 
-* TODO Models [0/2]
+* NEXT Models [0/2]
 - [ ] Use Eloquent models
 - [ ] Add relationships where needed:
   - [ ] At least 1 one-to-many

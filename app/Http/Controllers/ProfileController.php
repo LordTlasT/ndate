@@ -27,13 +27,23 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $data = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'birthday' => 'nullable|date',
+            'avatar' => 'nullable|image',
+            'biography' => 'nullable',
+        ]);
+    
+        if ($request->hasFile('avatar')) {
+            $data['avatar'] = $request->file('avatar')->store('avatars', 'public');
+        }
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
 
-        $request->user()->save();
+        $request->user()->update($data);
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
@@ -72,5 +82,10 @@ class ProfileController extends Controller
         $user->save();
         return Redirect::route('dashboard')->with('status', 'User promoted successfully');
 
+    }
+
+    public function show(User $user)
+    {
+        return view('profile.show', ['user' => $user]);
     }
 }
