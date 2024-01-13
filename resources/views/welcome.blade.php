@@ -4,11 +4,6 @@
         @if (Route::has('login'))
             @auth
                 <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-                <form id="form" method="POST" action="{{ route('logout') }}">@csrf</form>
-                @if (Route::has('logout'))
-                    <li><a href="#" onclick="event.preventDefault(); document.getElementById('form').submit();">Log
-                            out</a></li>
-                @endif
             @else
                 <li><a href="{{ route('login') }}">Log in</a></li>
 

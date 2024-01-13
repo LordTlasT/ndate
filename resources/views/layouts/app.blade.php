@@ -18,7 +18,11 @@
 
 <body>
 
-    @include('layouts.navigation')
+    <x-navigation>
+        @if (isset($navigation))
+            {{ $navigation }}
+        @endif
+    </x-navigation>
 
     <main class="container">
 

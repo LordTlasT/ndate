@@ -1,9 +1,16 @@
 <x-app-layout>
+    <x-slot name="navigation">
+        <li>
+            <a href="{{ url('/') }}">{{ __('Home') }}</a>
+        </li>
+    </x-slot>
+
     <x-slot name="header">
         <h2 align="center">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
+
     {{ __("You're logged in!") }}
     <footer>
         @if (auth()->user()->is_admin)
