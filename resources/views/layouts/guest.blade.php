@@ -17,21 +17,12 @@
 </head>
 
 <body>
-    <nav class="container-fluid">
-        <ul>
-            @if (isset($navigation))
-                {{ $navigation }}
-            @endif
-        </ul>
-        <ul>
-            @if (Route::has('about'))
-                <li><a href="{{ route('about') }}" class="secondary"><u>About</u></a></li>
-            @endif
-            @if (Route::has('contact.index'))
-                <li><a href="{{ route('contact.index') }}" class="secondary"><u>Contact</u></a></li>
-            @endif
-        </ul>
-    </nav>
+    <x-navigation>
+        @if (isset($navigation))
+            {{ $navigation }}
+        @endif
+    </x-navigation>
+
     <main class="container">
 
         <article>
