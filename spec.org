@@ -11,7 +11,6 @@
 - [X] Visitors can create a new account
 - [X] Users may or may not be an administrator
 - [X] Only an administrator can promote another user to administrator status (or create a new user that is an admin)
-
 * DONE Profile page [2/2]
 - [X] user has their own publicly available profile page
 - [X] user can edit their own user data
@@ -21,26 +20,26 @@
   - [X] Avatar (that can be uploaded and saved on the webserver)
   - [X] Short 'about me' biography 
 
-* NEXT Latest news [1/2]
+* DONE Latest news [2/2]
 - [X] Admins can add, edit, and delete news items
-- [-] Every visitor of the website can view the news posts
+- [X] Every visitor of the website can view the news posts
   These news items have at least the following:
-  - [ ] Title
-  - [ ] Cover image
+  - [X] Title
+  - [X] Cover image
   - [X] Content
   - [X] Publishing date
 
-* NEXT FAQ page [0/4]
-- [ ] There is a list of questions and answers, grouped by categories
-- [ ] Admins can add, edit, and delete FAQ categories
-- [ ] Admins can add, edit, and delete FAQ question and answer pairs
-- [ ] Every visitor of the website can view the FAQ page(s)
-
-* NEXT Contact page [2/2]
+* DONE FAQ page [4/4]
+- [X] There is a list of questions and answers, grouped by categories
+- [X] Admins can add, edit, and delete FAQ categories
+- [X] Admins can add, edit, and delete FAQ question and answer pairs
+- [X] Every visitor of the website can view the FAQ page(s)
+  
+* DONE Contact page [2/2]
 - [X] Visitors can fill out a contact form
 - [X] The content of submitted forms will be sent to the administrators
 
-
+  
 * NEXT views [2/4]
 - [X] You will at least have an "about" page. This is a static view that will serve as your Readme/list of sources. Cite any resources that you've used in this page, as well as a link to those pages. This page is mandatory, if your about page does not exist, you will not be able to pass for this project.
 - [X] Use at least 2 layouts (think about maybe splitting up the 'public' website and the admin panel)
@@ -60,10 +59,10 @@
 - [X] Use several controllers to split your logic
 Think back to resource controllers for CRUD operations
 
-* NEXT Models [0/2]
-- [ ] Use Eloquent models
-- [ ] Add relationships where needed:
-  - [ ] At least 1 one-to-many
+* NEXT Models [1/2]
+- [X] Use Eloquent models
+- [-] Add relationships where needed:
+  - [X] At least 1 one-to-many
   - [ ] At least 1 many-to-many 
 
 * DONE Database [2/2]
@@ -91,7 +90,7 @@ Default functionality for authentication:
   not good at design, use something like Bootstrap and pick a free
   theme from a website such as https://startbootstrap.com/
 
-* TODO's [0/2]
-- [ ] change navigation layout to a component or change it to a
+* DONE TODO's [2/2]
+- [X] change navigation layout to a component or change it to a
   the navigation component + profile.
-- [ ] split the profile in a profile-dropdown
+- [X] split the profile in a profile-dropdown
