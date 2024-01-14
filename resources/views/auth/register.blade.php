@@ -1,7 +1,7 @@
 <x-guest-layout>
 
     <x-slot name="navigation">
-        <li><a href="/">Home</a></li>
+        <li><a href="{{route('home')}}">Home</a></li>
     </x-slot>
     <form method="POST" action="{{ route('register') }}">
         @csrf
