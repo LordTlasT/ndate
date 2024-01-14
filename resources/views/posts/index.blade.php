@@ -14,7 +14,7 @@
 
     <x-slot name="navigation">
         <li>
-            <a href="{{ url('/') }}">{{ __('Home') }}</a>
+            <a href="{{ route('home') }}">{{ __('Home') }}</a>
         </li>
     </x-slot>
 

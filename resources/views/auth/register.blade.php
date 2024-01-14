@@ -1,10 +1,7 @@
 <x-guest-layout>
 
     <x-slot name="navigation">
-        <li><a href="/">Home</a></li>
-        @if (Route::has('login'))
-            <li><a href="{{ route('login') }}">Log In</a></li>
-        @endif
+        <li><a href="{{route('home')}}">Home</a></li>
     </x-slot>
     <form method="POST" action="{{ route('register') }}">
         @csrf

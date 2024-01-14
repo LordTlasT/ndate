@@ -20,7 +20,7 @@ use App\Http\Controllers\FAQPostController;
 // Guest Home
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 // Auth Home / Dashboard
 Route::get('/dashboard', function () {
