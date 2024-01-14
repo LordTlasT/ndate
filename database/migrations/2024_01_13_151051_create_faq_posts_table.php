@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('f_a_q_posts', function (Blueprint $table) {
+        Schema::create('faq_posts', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('question');
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->text('answer');
-            $table->string('category')->unique();
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('f_a_q_posts');
+        Schema::dropIfExists('faq_posts');
     }
 };

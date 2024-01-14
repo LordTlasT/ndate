@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\FAQPost;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class FAQPostController extends Controller
     public function index()
     {
         return view('faq.index', [
-            'faqs' => FAQPost::with('faq')->latest()->get()
+            'faqs' => FAQPost::all(),
+            'categories' => Category::all()
         ]);
     }
 
@@ -33,30 +35,37 @@ class FAQPostController extends Controller
         $validated = $request->validate([
             'question' => 'required|string|max:255',
             'answer' => 'required|string|max:255',
-            'category' => 'required|string|max:255',
+            'category_id' => 'required|integer',
         ]);
 
-        return redirect(route('faq.index'));
+        $category = Category::where('id', $validated['category_id'])->first();
 
-        //
+        if (!$category) {
+            // return
+            return redirect(route('faq.index'))->with('error', "$category->name does not exist.");
+        }
+
+        $FAQPost = FAQPost::create($validated);
+
+        $FAQPost->save();
+
+        return redirect(route('faq.index'))->with('success', 'FAQ post created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(FAQPost $faqs)
+    public function show(FAQPost $faq)
     {
-        return view('faq.show', [
-            'faqs' => $faqs,
-        ]);
+        return view('faq.show', ['faq' => $faq]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(FAQPost $faqs)
+    public function edit(FAQPost $faq)
     {
-        //
+        return view('faq.edit', ['faq' => $faq, 'categories' => Category::all()]);
     }
 
     /**
