@@ -40,7 +40,7 @@ class NewContactPost extends Notification
                     ->greeting("New ContactPost. #{$this->contactPost->id}")
                     ->line("Created at: {$this->contactPost->created_at}")
                     ->line($this->contactPost->message)
-                    ->action('Go to ndate', url('/'));
+                    ->action('Go to ndate', route('home'));
     }
 
     /**

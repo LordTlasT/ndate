@@ -19,7 +19,7 @@ use App\Http\Controllers\PostController;
 // Guest Home
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 // Auth Home / Dashboard
 Route::get('/dashboard', function () {
