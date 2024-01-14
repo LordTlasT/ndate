@@ -40,7 +40,7 @@ class NewPost extends Notification
             ->subject("New Post from {$this->post->user->name}")
             ->greeting("New Post from {$this->post->user->name}")
             ->line(Str::limit($this->post->message, 50))
-            ->action('Go to Post', url('/'))
+            ->action('Go to Post', route('posts.index'))
             ->line('Thank you for using ndate!');
     }
 

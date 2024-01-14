@@ -3,10 +3,7 @@
     <x-auth-session-status :status="session('status')" />
 
     <x-slot name="navigation">
-        <li><a href="/">Home</a></li>
-        @if (Route::has('register'))
-            <li><a href="{{ route('register') }}">Register</a></li>
-        @endif
+        <li><a href="{{route('home')}}">Home</a></li>
     </x-slot name>
 
     <form method="POST" action="{{ route('login') }}">
