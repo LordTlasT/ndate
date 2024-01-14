@@ -35,9 +35,16 @@ class PostController extends Controller
     {
         $validated = $request->validate([
             'message' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
+            'cover_image' => 'nullable|image',
         ]);
 
+        if ($request->hasFile('cover_image')) {
+            $validated['cover_image'] = $request->file('cover_image')->store('cover_image', 'public');
+        }
+
         $request->user()->posts()->create($validated);
+
 
         return redirect(route('posts.index'));
     }
