@@ -28,8 +28,8 @@
     </x-slot>
 
     @if (is_admin($cur_user))
-        <x-post action="{{ route('posts.store') }}">
-        </x-post>
+        <x-news-post action="{{ route('posts.store') }}">
+        </x-news-post>
         <hr>
     @endif
 
@@ -41,8 +41,19 @@
         @endif
         </form>
 
-        <span>
-            <strong>{{ $post->user->name }}</strong>
+        <h3>{{ $post->title }}</h3>
+        @if ($post->cover_image)
+            <div
+                style="
+            width: 256px;
+            height: 128px;
+            background-image: url('{{ Storage::url($post->cover_image) }}');
+            background-size: cover;
+            background-position: center;
+        "></div>
+        @endif
+        <span>by
+            <strong>{{ $post->user->name }}</strong> on
             <small>{{ $post->created_at->format('j M Y, g:i a') }}</small>
             @unless ($post->created_at->eq($post->updated_at))
                 <small> &middot; {{ __('edited') }}</small>
