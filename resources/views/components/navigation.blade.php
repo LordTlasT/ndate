@@ -1,9 +1,6 @@
 <nav class="container-fluid">
     <ul>
         <li><a href="{{ route('posts.index') }}" role="button" class="secondary">{{ __('News') }}</a></li>
-        @auth
-            <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-        @endauth
         {{ $slot }}
         @auth
             <li>
@@ -16,13 +13,8 @@
                             @if (Route::has('dashboard'))
                                 <a href="{{ route('dashboard') }}">Dashboard</a>
                             @endif
-
                         </li>
-                        <li>
-                            <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
-                                {{ __('Profile') }}
-                            </x-nav-link>
-                        </li>
+                        <li><a href="{{ route('profile.edit') }}">{{ __('Profile') }}</a></li>
                         <li>
                             @if (Route::has('logout'))
                                 <a href="#"

@@ -1,14 +1,8 @@
 <x-guest-layout>
 
-    <x-slot name="navigation">
-        @auth
-            <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-        @endauth
-    </x-slot>
-
     <x-slot name="header">
         <hgroup>
-            <h1 align="center">endate</h1>
+            <h1 align="center">ndate</h1>
             <p align="center"><small><i>Choosing... but it's easy!</i></small></p>
         </hgroup>
     </x-slot>
@@ -19,8 +13,8 @@
     </hgroup>
 
     <hgroup>
-        <h4>What is endate?</h4>
-        <p>endate is an app that helps you choose between n options. It's that simple.</p>
+        <h4>What is ndate?</h4>
+        <p>ndate is an app that helps you choose between n options. It's that simple.</p>
     </hgroup>
 
     <footer>

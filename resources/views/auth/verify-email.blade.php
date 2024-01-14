@@ -4,11 +4,11 @@
     <form method="POST" action="{{ route('verification.send') }}">
         @csrf
         <br>
-        <button class="outline">{{ __('Resend Verification Email') }}</button>
+        <a href="#" onclick="event.preventDefault(); this.closest('form').submit();">{{ __('Resend Verification Email') }}</a>
     </form>
     @if (session('status') == 'verification-link-sent')
-        <br><small>A new verification link has been sent to the email address you provided during registration. You can
-            check out your <a href="{{ route('profile.edit') }}">profile</a> in case you forgot.</small>
+        <small>A new verification link has been sent to the email address you provided during registration. You can
+            check out your email address at your <a href="{{ route('profile.edit') }}">profile</a>.</small>
     @endif
 
 
