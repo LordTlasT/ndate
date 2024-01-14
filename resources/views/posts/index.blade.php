@@ -28,8 +28,8 @@
     </x-slot>
 
     @if (is_admin($cur_user))
-        <x-post action="{{ route('posts.store') }}">
-        </x-post>
+        <x-news-post action="{{ route('posts.store') }}">
+        </x-news-post>
         <hr>
     @endif
 
