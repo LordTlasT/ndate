@@ -4,6 +4,8 @@ use App\Http\Controllers\ContactPostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\FAQPostController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,8 +51,21 @@ Route::middleware('auth')->group(function () {
 });
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 
+// FAQPost
+Route::resource('faq', FAQPostController::class)
+    ->only(['store', 'edit', 'update', 'destroy'])
+    ->middleware(['auth', 'verified', 'admin']);
+Route::get('faq/{faq}', [FAQPostController::class, 'show'])->name('faq.show');
+Route::resource('faq', FAQPostController::class)
+    ->only(['index']);
+
+// Category
+Route::resource('category', CategoryController::class)
+    ->only(['index', 'store', 'edit', 'update', 'destroy'])
+    ->middleware(['auth', 'verified', 'admin']);
+
 // ContactPost
-Route::resource('/contact', ContactPostController::class)
+Route::resource('contact', ContactPostController::class)
     ->only(['index', 'store']);
 
 // About

@@ -66,7 +66,7 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        return Redirect::route('home');
     }
 
     public function promote(Request $request): RedirectResponse
@@ -75,10 +75,10 @@ class ProfileController extends Controller
 
         if (!$user)
             return Redirect::route('dashboard')->with('status', 'User not found');
-        if  ($user->is_admin == 1)
+        if  ($user->is_admin)
             return Redirect::route('dashboard')->with('status', 'User is already an admin');
 
-        $user->is_admin = 1;
+        $user->is_admin = true;
         $user->save();
         return Redirect::route('dashboard')->with('status', 'User promoted successfully');
 
