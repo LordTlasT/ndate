@@ -73,14 +73,24 @@ class FAQPostController extends Controller
      */
     public function update(Request $request, FAQPost $faqs)
     {
-        //
+        $validated = $request->validate([
+            'question' => 'required|string|max:255',
+            'answer' => 'required|string|max:255',
+            'category' => 'required|string|max:255|alpha_num',
+        ]);
+
+        $faqs->update($validated);
+
+        return redirect(route('faq.index'))->with('success', 'FAQ post updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(FAQPost $faqs)
+    public function destroy(FAQPost $faq)
     {
-        //
+        $faq->delete();
+        
+        return redirect(route('faq.index'))->with('success', 'FAQ post deleted successfully.');
     }
 }

@@ -1,43 +1,43 @@
+@php
+    $cur_user = auth()->user();
+    /**
+     * Returns true if the current user is an admin.
+     * @return bool
+     */
+    function is_admin($user)
+    {
+        return $user && $user->isAdmin();
+    }
+@endphp
+
 <x-guest-layout>
-    @php
-        $cur_user = auth()->user();
-        /**
-         * Returns true if the current user is an admin.
-         * @return bool
-         */
-        function is_admin($user)
-        {
-            return $user && $user->isAdmin();
-        }
-    @endphp
-
-
+    <x-slot name="header">
+        <hgroup>
+            <h2 align="center">
+                {{ __('FAQ') }}
+            </h2>
+            <p align="center">Frequently Asked Questions</p>
+        </hgroup>
+    </x-slot>
+    <x-session />
+    @if (is_admin($cur_user))
+        @include('faq.create-faq', ['categories' => $categories])
+    @endif
 
     @foreach ($faqs as $faq)
-        <form id="faq-{{ $faq->id }}" method="POST" action="{{ route('faq.destroy', $faq) }}">
-            @csrf
-            @method('delete')
-        </form>
-        <h3>{{ $faq->title }}</h3>
-        <span>by
-            <strong>{{ $faq->user->name }}</strong> on
-            <small>{{ $faq->created_at->format('j M Y, g:i a') }}</small>
-            @unless ($faq->created_at->eq($faq->updated_at))
-                <small> &middot; {{ __('edited') }}</small>
-            @endunless
-        </span>
-        <blockquote>{{ $faq->message }}</blockquote>
+        <hgroup>
+            <h3>{{ $faq->question }}</h3>
+        <p><mark>{{ $faq->category->name }}</mark></p>
+            <blockquote>{{ $faq->answer }}</blockquote>
+        </hgroup>
         @if (is_admin($cur_user))
-            <a href="{{ route('faqs.edit', $faq) }}">{{ __('Edit') }}</a>
-            <button type="submit" form="faq-{{ $faq->id }}">{{ __('Delete') }}</button>
-        @endif
-        <hr>
-
-        @if (is_admin($cur_user))
-            <form id="form-{{ $faq->id }}" method="POST" action="{{ route('faqs.destroy', $faq) }}">
+            <form id="faq-{{ $faq->id }}" method="POST" action="{{ route('faq.destroy', $faq) }}">
                 @csrf
                 @method('delete')
             </form>
+            <a href="{{ route('faq.edit', $faq) }}">{{ __('Edit') }}</a>
+            <a href="#"
+                onclick="event.preventDefault(); document.getElementById('faq-{{ $faq->id }}').submit();">{{ __('Delete') }}</a>
         @endif
     @endforeach
 </x-guest-layout>
