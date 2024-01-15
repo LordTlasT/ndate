@@ -1,0 +1,83 @@
+#+title: ndate
+* ndate
+ndate is a web app that lets people choose between n options, it uses
+polls that users can share and vote in.  Once they have voted they
+can decide based on the results.
+
+* Requirements
+- smtp server :: I recommend using [[https://github.com/OpenSMTPD/OpenSMTPD][opensmtpd]], because it is easy to
+  install and configure.  However if you're trying out this project
+  [[https://github.com/axllent/mailpit][mailpit]] is a good alternative.
+- mariadb :: I use [[https://mariadb.com/downloads/][mariadb]], but you could use any RDBMS that is
+  laravel compatible if you tweak the ~.env~ file.
+- composer :: You must have [[https://getcomposer.org/][composer]] installed on your machine.
+- npm :: npm comes with [[https://nodejs.org/en/download/current][node]] and should be installed as well.
+
+* Installation
+Clone the repo and change directory to it
+   #+begin_src shell
+     git clone https://github.com/tlast/ndate
+     cd ndate
+   #+end_src
+
+** Scripted
+If you are on linux/wsl you can try this script out.  It will run all
+the manual steps, no questions asked.
+#+begin_src shell
+  ./install.sh
+#+end_src
+You can now skip to [[Running]].
+
+** Manually
+1. Copy the configuration, you can you configure ~.env~ if you know what
+   you're doing
+   #+begin_src shell
+     cp .env.example .env
+   #+end_src 
+   This config file assumes the following:
+   - mailpit as a mailer
+   - this database configuration:
+     |----------+-----------|
+     | user     | laravel   |
+     | database | laraveldb |
+     | password | space123  |
+     | server   | localhost |
+     | port     | 3306      |
+     |----------+-----------|
+
+2. Ensure the database specified in ~.env~ is running and migrate the migrations
+   #+begin_src shell
+     php artisan migrate
+   #+end_src
+
+3. Install dependencies
+   #+begin_src shell
+     npm install
+     composer install --optimize-autoloader --no-dev
+   #+end_src
+   
+*** Images
+If you want to make images public such as covers and avatars run this
+  command as well:
+  #+begin_src shell
+    php artisan storage:link
+  #+end_src
+ 
+* Running
+Start vite
+#+begin_src shell
+  npm run dev
+#+end_src
+
+And from a different terminal, serve the web app
+#+begin_src shell
+  php artisan serve
+#+end_src
+
+* Licenses
+ndate itself is licensed undes the MIT license.
+|----------+-------------|
+| pico.css | [[https://github.com/picocss/pico#copyright-and-license][MIT license]] |
+| laravel  | [[https://opensource.org/licenses/MIT][MIT license]] |
+| vite     | [[https://github.com/vitejs/vite#license][MIT]]         |
+|----------+-------------|

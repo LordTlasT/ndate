@@ -40,20 +40,20 @@
 - [X] The content of submitted forms will be sent to the administrators
 
   
-* NEXT views [2/4]
+* NEXT views [4/4]
 - [X] You will at least have an "about" page. This is a static view that will serve as your Readme/list of sources. Cite any resources that you've used in this page, as well as a link to those pages. This page is mandatory, if your about page does not exist, you will not be able to pass for this project.
 - [X] Use at least 2 layouts (think about maybe splitting up the 'public' website and the admin panel)
-- [ ] Use partials where logical
-- [ ] Use the techniques we've seen during the exercises:
-  - [ ] Control structures
-  - [ ] XSS protection
-  - [ ] CSRF protection
-  - [ ] Client-side validation
+- [X] Use partials where logical
+- [X] Use the techniques we've seen during the exercises:
+  - [X] Control structures
+  - [X] XSS protection
+  - [X] CSRF protection
+  - [X] Client-side validation
 
-* NEXT Routes [0/3]
-- [ ] All routes use controller methods
-- [ ] All routes use logical middleware
-- [ ] If possible, group the routes where needed
+* DONE Routes [3/3]
+- [X] All routes use controller methods
+- [X] All routes use logical middleware
+- [X] If possible, group the routes where needed
 
 * DONE Controller [1/1]
 - [X] Use several controllers to split your logic
@@ -90,7 +90,20 @@ Default functionality for authentication:
   not good at design, use something like Bootstrap and pick a free
   theme from a website such as https://startbootstrap.com/
 
-* DONE TODO's [2/2]
+* DONE TODO's [2/12]
 - [X] change navigation layout to a component or change it to a
   the navigation component + profile.
 - [X] split the profile in a profile-dropdown
+- [ ] Sort categories alphabetically
+- [ ] Create a filtered view ~/faq/category/{id}~ to filter by category
+- [ ] try maybe to change some index pages into filters that go to a
+  show page
+- [ ] cleanup all url('')'s
+- [ ] use dropdown component
+- [ ] use knowledge from class
+- [ ] update down methods in migrations
+- [ ] $timestpams = false where possible
+- [ ] Add polls (ndate)
+- [ ] implement client side validation?
+  
+  
